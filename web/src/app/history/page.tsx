@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Attempt } from "@/lib/types";
+import cutoffs from "@/data/cutoffs.json";
 
 export default function History() {
   const [history, setHistory] = useState<Attempt[]>([]);
@@ -27,15 +28,24 @@ export default function History() {
     a.click();
   }
 
-  const topicMisses: Record<string, number> = {};
+  const topicStats: Record<string, { total: number; misses: number }> = {};
   history.forEach((h) => {
     h.weak_topics
       .split(";")
       .map((t) => t.trim())
       .filter(Boolean)
-      .forEach((t) => (topicMisses[t] = (topicMisses[t] || 0) + 1));
+      .forEach((t) => {
+        topicStats[t] = topicStats[t] || { total: 0, misses: 0 };
+        topicStats[t].misses++;
+        topicStats[t].total++;
+      });
   });
-  const weakest = Object.entries(topicMisses).sort((a, b) => b[1] - a[1]).slice(0, 5);
+  const heatmapTopics = Object.entries(topicStats).sort((a, b) => b[1].misses - a[1].misses).slice(0, 12);
+
+  const chronological = [...history].reverse();
+  const trendPoints = chronological.map((h) => h.accuracy_pct);
+  const latestFullMockPct = [...chronological].reverse().find((h) => h.scope === "full");
+  const latestCutoff = cutoffs.byYear["2025" as keyof typeof cutoffs.byYear];
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-50">
@@ -47,10 +57,39 @@ export default function History() {
           </Link>
         </div>
 
-        {weakest.length > 0 && (
+        {latestFullMockPct && (
+          <div className="mb-6 rounded-lg border border-blue-300 bg-blue-50 dark:bg-blue-950 dark:border-blue-800 p-4 text-sm">
+            <strong>Latest full mock:</strong> {latestFullMockPct.marks_scored} / {latestFullMockPct.max_marks} marks.
+            Rough GATE DA qualifying cutoff (General, {Object.keys(cutoffs.byYear).slice(-1)[0]}) is ~{latestCutoff} —{" "}
+            {latestFullMockPct.marks_scored >= latestCutoff ? "you'd be above it. " : "you'd be below it. "}
+            <span className="text-zinc-500">({cutoffs.note})</span>
+          </div>
+        )}
+
+        {trendPoints.length > 1 && (
+          <div className="mb-6 rounded-lg border border-zinc-200 dark:border-zinc-800 p-4">
+            <div className="text-sm font-medium mb-2">Accuracy trend</div>
+            <TrendChart points={trendPoints} />
+          </div>
+        )}
+
+        {heatmapTopics.length > 0 && (
           <div className="mb-8 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-950 dark:border-amber-800 p-4 text-sm">
-            <strong>Recurring weak topics:</strong>{" "}
-            {weakest.map(([t, n]) => `${t} (${n}x)`).join(", ")}
+            <div className="font-medium mb-2">Weak-topic heatmap (darker = more misses)</div>
+            <div className="flex flex-wrap gap-2">
+              {heatmapTopics.map(([t, s]) => {
+                const intensity = Math.min(s.misses / 5, 1);
+                return (
+                  <span
+                    key={t}
+                    style={{ backgroundColor: `rgba(220, 38, 38, ${0.15 + intensity * 0.6})` }}
+                    className="rounded px-2 py-1 text-xs text-zinc-900 dark:text-white"
+                  >
+                    {t} ({s.misses}x)
+                  </span>
+                );
+              })}
+            </div>
           </div>
         )}
 
@@ -82,15 +121,37 @@ export default function History() {
                 </tbody>
               </table>
             </div>
-            <button
-              onClick={downloadCSV}
-              className="mt-6 rounded-md border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-sm"
-            >
-              Export CSV (for scores/history.csv in repo)
-            </button>
+            <div className="flex gap-4 mt-6">
+              <button
+                onClick={downloadCSV}
+                className="rounded-md border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-sm"
+              >
+                Export CSV (for scores/history.csv in repo)
+              </button>
+              <Link href="/mistakes" className="rounded-md border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-sm">
+                Mistake Notebook
+              </Link>
+            </div>
           </>
         )}
       </div>
     </div>
+  );
+}
+
+function TrendChart({ points }: { points: number[] }) {
+  const w = 500;
+  const h = 120;
+  const max = 100;
+  const stepX = points.length > 1 ? w / (points.length - 1) : 0;
+  const coords = points.map((p, i) => `${i * stepX},${h - (p / max) * h}`).join(" ");
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-28" preserveAspectRatio="none">
+      <polyline points={coords} fill="none" stroke="currentColor" className="text-blue-600" strokeWidth={2} />
+      {points.map((p, i) => (
+        <circle key={i} cx={i * stepX} cy={h - (p / max) * h} r={3} className="fill-blue-600" />
+      ))}
+    </svg>
   );
 }
