@@ -46,6 +46,28 @@ function TestInner() {
         .map((m) => m.question);
       return shuffle(due);
     }
+    if (mode === "custom") {
+      const raw = sessionStorage.getItem("igate_custom_spec");
+      if (!raw) return [];
+      const spec = JSON.parse(raw) as { sections: string[]; difficulties: string[]; count: number };
+      const pool = allQuestions.filter(
+        (q) => (spec.sections.length === 0 || spec.sections.includes(q.section)) && spec.difficulties.includes(q.difficulty)
+      );
+      return shuffle(pool).slice(0, spec.count);
+    }
+    if (mode === "daily") {
+      const raw = localStorage.getItem("igate_mistakes");
+      const mistakes = raw ? JSON.parse(raw) : {};
+      const dueMistakes = Object.values(mistakes as Record<string, { question: Question; lastMissedAt: string; timesMissed: number }>)
+        .filter((m) => isDue(m.lastMissedAt, m.timesMissed))
+        .map((m) => m.question);
+      const rest = shuffle(allQuestions.filter((q) => !dueMistakes.some((d) => d.id === q.id)));
+      return shuffle([...dueMistakes, ...rest].slice(0, 10));
+    }
+    if (mode === "pyq") {
+      const pool = allQuestions.filter((q) => q.source !== "generated");
+      return shuffle(pool).slice(0, Math.min(count || 65, pool.length));
+    }
     const pool = allQuestions.filter((q) => q.section === section);
     return shuffle(pool).slice(0, count);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -178,7 +200,7 @@ function TestInner() {
     const attempt = {
       date: new Date().toISOString(),
       test_type: mode,
-      scope: mode === "full" ? "full" : section,
+      scope: mode === "topic" ? section : mode,
       total_questions: testQuestions.length,
       attempted,
       correct,

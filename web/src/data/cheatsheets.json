@@ -1,0 +1,10 @@
+{
+  "Probability and Statistics": "Bayes: P(A|B) = P(B|A)P(A)/P(B). Binomial mean=np, var=np(1-p). Normal: 68-95-99.7 rule. Correlation r in [-1,1]. z-test for known variance, t-test for unknown variance/small n.",
+  "Linear Algebra": "Eigenvalues: det(A-λI)=0. Rank = number of independent rows/cols. SVD: A=UΣV^T. Symmetric matrices have real eigenvalues & orthogonal eigenvectors. Trace = sum of eigenvalues; det = product of eigenvalues.",
+  "Calculus and Optimization": "Gradient descent update: θ = θ - α∇f(θ). Convex function: local min = global min. Lagrange multipliers for constrained optimization: ∇f = λ∇g.",
+  "Programming, Data Structures & Algorithms": "QuickSort avg O(n log n), worst O(n²). MergeSort always O(n log n). BFS = shortest path (unweighted), Dijkstra = shortest path (weighted, non-negative). Hash table avg O(1) lookup.",
+  "Database Management & Warehousing": "1NF: atomic values. 2NF: no partial dependency. 3NF: no transitive dependency. BCNF: every determinant is a superkey. Star schema: 1 fact table + denormalized dimension tables.",
+  "Machine Learning": "Bias-variance: high bias=underfit, high variance=overfit. Precision=TP/(TP+FP), Recall=TP/(TP+FN), F1=2PR/(P+R). PCA: eigenvectors of covariance matrix, ordered by eigenvalue (variance explained). Regularization: L1=sparsity, L2=shrinkage.",
+  "Artificial Intelligence": "BFS=complete+optimal(unweighted). A* optimal if heuristic is admissible (never overestimates). Bayesian networks encode conditional independence via DAG structure.",
+  "General Aptitude": "Practice verbal analogies, reading comprehension speed, and basic quant (percentages, ratios, permutations) daily — low-hanging marks."
+}

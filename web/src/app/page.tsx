@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import questions from "@/data/questions.json";
 import { Question } from "@/lib/types";
 import SyllabusTracker from "@/components/SyllabusTracker";
+import MotivationBar from "@/components/MotivationBar";
 
 const allQuestions = questions as Question[];
 
@@ -32,7 +33,37 @@ export default function Home() {
     <div className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-50">
       <main className="max-w-2xl mx-auto px-6 py-16">
         <h1 className="text-3xl font-bold mb-1">I-GATE</h1>
-        <p className="text-zinc-500 mb-10">GATE DA 2027 practice — Data Science &amp; Artificial Intelligence</p>
+        <p className="text-zinc-500 mb-6">GATE DA 2027 practice — Data Science &amp; Artificial Intelligence</p>
+
+        <MotivationBar />
+
+        <div className="grid grid-cols-3 gap-2 mb-6 text-xs">
+          <a href="/builder" className="rounded-md border border-zinc-300 dark:border-zinc-700 text-center py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+            🎛 Custom test
+          </a>
+          <a href="/browse" className="rounded-md border border-zinc-300 dark:border-zinc-700 text-center py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+            🔍 Browse Qs
+          </a>
+          <a href="/test?mode=pyq&count=65" className="rounded-md border border-zinc-300 dark:border-zinc-700 text-center py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+            📄 PYQ only
+          </a>
+          <a href="/mistakes" className="rounded-md border border-zinc-300 dark:border-zinc-700 text-center py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+            ❌ Mistakes
+          </a>
+          <a href="/bookmarks" className="rounded-md border border-zinc-300 dark:border-zinc-700 text-center py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+            ★ Bookmarks
+          </a>
+          <a href="/cheatsheets" className="rounded-md border border-zinc-300 dark:border-zinc-700 text-center py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+            📋 Cheat sheets
+          </a>
+        </div>
+
+        <a
+          href="/test?mode=daily"
+          className="block w-full rounded-lg bg-orange-500 text-white text-center py-3 font-medium mb-6"
+        >
+          ⚡ Today&apos;s Daily Quiz (10 Qs)
+        </a>
 
         <div className="space-y-6">
           <div className="flex gap-3">
@@ -109,7 +140,9 @@ export default function Home() {
             <a href="/history" className="text-blue-600 hover:underline">
               View score history →
             </a>
-            <span className="text-zinc-500">{allQuestions.length} questions in bank</span>
+            <a href="/admin" className="text-zinc-500 hover:underline">
+              {allQuestions.length} questions in bank · add more →
+            </a>
           </div>
 
           <SyllabusTracker />
