@@ -13,8 +13,8 @@ Ask for a test by topic, chapter, or full mock (GATE-style: 65 Q, 100 marks, MCQ
 
 ## Past papers status
 - 2024: downloaded (`past_papers/GATE_DA_2024_paper.pdf`, `GATE_DA_2024_answerkey.pdf`)
-- 2025: not yet added — GATE DA 2025 paper needs to be sourced/uploaded
-- 2026: not yet added — GATE DA 2026 paper needs to be sourced/uploaded
+- 2025: added (`past_papers/GATE_DA_2025_paper.pdf`) — no separate answer key yet
+- 2026: added (`past_papers/GATE_DA_2026_paper.pdf`) — no separate answer key yet
 
 ## Score tracking
 After each test, results are appended to `scores/history.csv` so weak topics can be tracked over time.
