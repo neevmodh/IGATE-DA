@@ -95,8 +95,8 @@ export default function Results() {
           <Link href="/" className="rounded-md bg-blue-600 text-white px-4 py-2 text-sm">
             New test
           </Link>
-          <Link href="/history" className="rounded-md border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-sm">
-            View history
+          <Link href="/analyze" className="rounded-md border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-sm">
+            Analyze
           </Link>
         </div>
       </div>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Attempt } from "@/lib/types";
 import cutoffs from "@/data/cutoffs.json";
 
-export default function History() {
+export default function Analyze() {
   const [history, setHistory] = useState<Attempt[]>([]);
 
   useEffect(() => {
@@ -47,14 +47,25 @@ export default function History() {
   const latestFullMockPct = [...chronological].reverse().find((h) => h.scope === "full");
   const latestCutoff = cutoffs.byYear["2025" as keyof typeof cutoffs.byYear];
 
+  const totalQuestions = history.reduce((s, h) => s + h.total_questions, 0);
+  const totalCorrect = history.reduce((s, h) => s + h.correct, 0);
+  const overallAccuracy = totalQuestions ? Math.round((totalCorrect / totalQuestions) * 1000) / 10 : 0;
+  const testsTaken = history.length;
+
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-50">
       <div className="max-w-2xl mx-auto px-6 py-10">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">Score History</h1>
+          <h1 className="text-2xl font-bold">Analyze</h1>
           <Link href="/" className="text-blue-600 hover:underline text-sm">
-            ← New test
+            ← Home
           </Link>
+        </div>
+
+        <div className="grid grid-cols-3 gap-3 mb-6">
+          <StatCard label="Tests taken" value={String(testsTaken)} />
+          <StatCard label="Questions solved" value={String(totalQuestions)} />
+          <StatCard label="Overall accuracy" value={`${overallAccuracy}%`} />
         </div>
 
         {latestFullMockPct && (
@@ -129,12 +140,21 @@ export default function History() {
                 Export CSV (for scores/history.csv in repo)
               </button>
               <Link href="/mistakes" className="rounded-md border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-sm">
-                Mistake Notebook
+                Mistake Notebook →
               </Link>
             </div>
           </>
         )}
       </div>
+    </div>
+  );
+}
+
+function StatCard({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-lg border border-zinc-200 dark:border-zinc-800 p-3 text-center">
+      <div className="text-lg font-semibold">{value}</div>
+      <div className="text-[11px] text-zinc-500">{label}</div>
     </div>
   );
 }
