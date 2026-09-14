@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import questions from "@/data/questions.json";
 import { Question } from "@/lib/types";
+import SyllabusTracker from "@/components/SyllabusTracker";
 
 const allQuestions = questions as Question[];
 
@@ -110,6 +111,8 @@ export default function Home() {
             </a>
             <span className="text-zinc-500">{allQuestions.length} questions in bank</span>
           </div>
+
+          <SyllabusTracker />
         </div>
       </main>
     </div>

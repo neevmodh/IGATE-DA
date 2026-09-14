@@ -1,0 +1,123 @@
+[
+  {
+    "section": "Probability and Statistics",
+    "topics": [
+      "Counting (permutations, combinations)",
+      "Axioms of probability",
+      "Conditional probability & Bayes' theorem",
+      "Random variables",
+      "Uniform distribution",
+      "Bernoulli & Binomial distribution",
+      "Normal distribution",
+      "t-Distribution",
+      "Chi-squared distribution",
+      "Mean, median, mode, variance",
+      "Correlation and covariance",
+      "Hypothesis testing (z-test, t-test)",
+      "Chi-squared test",
+      "Confidence intervals"
+    ]
+  },
+  {
+    "section": "Linear Algebra",
+    "topics": [
+      "Vector spaces",
+      "Matrices and matrix operations",
+      "Determinants",
+      "Rank of a matrix",
+      "Systems of linear equations",
+      "Eigenvalues and eigenvectors",
+      "LU decomposition",
+      "SVD (Singular Value Decomposition)",
+      "Quadratic forms",
+      "Projections"
+    ]
+  },
+  {
+    "section": "Calculus and Optimization",
+    "topics": [
+      "Single and multi-variable functions",
+      "Limits and continuity",
+      "Differentiability",
+      "Taylor series",
+      "Maxima and minima",
+      "Gradient descent",
+      "Constrained optimization",
+      "Unconstrained optimization"
+    ]
+  },
+  {
+    "section": "Programming, Data Structures & Algorithms",
+    "topics": [
+      "Python programming basics",
+      "Stacks and queues",
+      "Linked lists",
+      "Trees",
+      "Hash tables",
+      "Searching algorithms",
+      "Sorting algorithms",
+      "Divide-and-conquer",
+      "Graph algorithms",
+      "Time and space complexity"
+    ]
+  },
+  {
+    "section": "Database Management & Warehousing",
+    "topics": [
+      "ER model",
+      "Relational model",
+      "SQL",
+      "Relational algebra",
+      "Normalization (1NF-BCNF)",
+      "Indexing",
+      "Data transformation / ETL",
+      "Data warehousing (star/snowflake schema)",
+      "OLAP concepts"
+    ]
+  },
+  {
+    "section": "Machine Learning",
+    "topics": [
+      "Linear regression",
+      "Logistic regression",
+      "Decision trees",
+      "SVM",
+      "k-NN",
+      "Ensemble methods (bagging, boosting, random forest)",
+      "k-means clustering",
+      "Hierarchical clustering",
+      "GMM",
+      "PCA",
+      "LDA",
+      "Feedforward neural networks",
+      "Backpropagation",
+      "CNN basics",
+      "RNN basics",
+      "Bias-variance tradeoff",
+      "Cross-validation",
+      "Precision, recall, F1, ROC-AUC",
+      "L1/L2 regularization"
+    ]
+  },
+  {
+    "section": "Artificial Intelligence",
+    "topics": [
+      "BFS / DFS",
+      "A* search",
+      "Hill climbing",
+      "Propositional logic",
+      "Predicate logic",
+      "Reasoning under uncertainty",
+      "Bayesian networks",
+      "Markov decision processes"
+    ]
+  },
+  {
+    "section": "General Aptitude",
+    "topics": [
+      "Verbal ability",
+      "Quantitative aptitude",
+      "Analytical reasoning"
+    ]
+  }
+]
