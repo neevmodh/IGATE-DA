@@ -350,7 +350,7 @@ function TestInner() {
             {current < testQuestions.length - 1 ? (
               <button
                 onClick={() => goTo(current + 1)}
-                className="rounded-md bg-accent text-white px-4 py-2 text-sm"
+                className="rounded-md bg-accent hover:bg-accent-ink text-white px-4 py-2 text-sm shadow-sm transition-colors"
               >
                 Save & Next
               </button>
@@ -389,7 +389,7 @@ function TestInner() {
             </div>
             <button
               onClick={handleSubmit}
-              className="w-full mt-4 rounded-md bg-good text-white py-2 text-sm"
+              className="w-full mt-4 rounded-md bg-good hover:brightness-95 text-white py-2 text-sm shadow-sm transition-all"
             >
               Submit Test
             </button>

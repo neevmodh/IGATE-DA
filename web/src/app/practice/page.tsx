@@ -105,7 +105,7 @@ export default function Practice() {
           <button
             onClick={startTest}
             disabled={allQuestions.length === 0}
-            className="w-full rounded-lg bg-accent text-white py-3 font-medium disabled:opacity-40"
+            className="w-full rounded-lg bg-accent hover:bg-accent-ink text-white py-3 font-medium shadow-sm hover:shadow-md transition-all disabled:opacity-40 disabled:hover:bg-accent disabled:hover:shadow-sm"
           >
             Start Test
           </button>

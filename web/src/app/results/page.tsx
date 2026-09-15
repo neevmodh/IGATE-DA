@@ -96,7 +96,7 @@ export default function Results() {
         </div>
 
         <div className="flex gap-4 mt-8">
-          <Link href="/" className="rounded-md bg-accent text-white px-4 py-2 text-sm">
+          <Link href="/" className="rounded-md bg-accent hover:bg-accent-ink text-white px-4 py-2 text-sm shadow-sm transition-colors">
             New test
           </Link>
           <Link href="/analyze" className="rounded-md border border-border shadow-sm px-4 py-2 text-sm">

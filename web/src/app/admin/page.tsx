@@ -142,7 +142,7 @@ export default function Admin() {
         </div>
 
         {draft.length > 0 && (
-          <button onClick={downloadDraft} className="w-full mt-4 rounded-md bg-good text-white py-2 text-sm">
+          <button onClick={downloadDraft} className="w-full mt-4 rounded-md bg-good hover:brightness-95 text-white py-2 text-sm shadow-sm transition-all">
             Download {draft.length} question(s) as JSON
           </button>
         )}

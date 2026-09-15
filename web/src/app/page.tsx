@@ -75,8 +75,11 @@ export default function Home() {
     <div className="flex-1 bg-bg text-ink">
       <main className="max-w-[1120px] mx-auto px-10 py-9">
         <div className="flex items-center gap-5 mb-8">
-          <div className="w-16 h-16 rounded-full bg-surface border border-border shadow-md flex items-center justify-center shrink-0">
-            <Image src="/gate-logo.svg" alt="GATE 2027 emblem" width={54} height={50} />
+          <div className="relative w-[72px] h-[72px] shrink-0">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent-tint to-warn-tint" />
+            <div className="absolute inset-[3px] rounded-full bg-surface border border-border shadow-md flex items-center justify-center overflow-hidden">
+              <Image src="/gate-logo.svg" alt="GATE 2027 emblem" width={58} height={54} />
+            </div>
           </div>
           <div>
             <h1 className="display text-[30px] font-extrabold mb-1">Good to see you, Neev.</h1>
@@ -89,7 +92,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-5 mb-5">
           <a
             href="/test?mode=daily"
-            className="relative overflow-hidden rounded-2xl border border-border shadow-sm bg-surface p-7 flex flex-col justify-between"
+            className="group relative overflow-hidden rounded-2xl border border-border shadow-sm hover:shadow-md bg-surface p-7 flex flex-col justify-between transition-shadow"
           >
             <Image
               src="/gate-logo.svg"
@@ -110,8 +113,8 @@ export default function Home() {
               <h2 className="display text-[22px] font-bold mb-2">10 questions, mixed from your weak topics</h2>
               <p className="text-ink-2 text-sm mb-5">Includes spaced-repetition reviews due today.</p>
             </div>
-            <span className="relative self-start rounded-xl bg-accent text-white px-5 py-3 text-sm font-semibold">
-              Start Daily Quiz
+            <span className="relative self-start rounded-xl bg-accent text-white px-5 py-3 text-sm font-semibold shadow-sm transition-transform group-hover:-translate-y-0.5 group-hover:shadow-md">
+              Start Daily Quiz &rarr;
             </span>
           </a>
 
@@ -123,9 +126,9 @@ export default function Home() {
             <a
               key={c.href}
               href={c.href}
-              className="rounded-xl border border-border shadow-sm bg-surface p-4.5 flex flex-col gap-2.5 hover:border-accent/40 transition-colors"
+              className="group rounded-xl border border-border shadow-sm bg-surface p-4.5 flex flex-col gap-2.5 hover:border-accent/50 hover:shadow-md hover:-translate-y-0.5 transition-all"
             >
-              <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${c.warn ? "bg-warn-tint" : "bg-accent-tint"}`}>
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110 ${c.warn ? "bg-warn-tint" : "bg-accent-tint"}`}>
                 <svg
                   width="16"
                   height="16"
