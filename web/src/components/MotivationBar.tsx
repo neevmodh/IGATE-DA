@@ -57,31 +57,48 @@ export default function MotivationBar() {
   const pct = Math.min((solvedToday / goal) * 100, 100);
 
   return (
-    <div className="rounded-lg border border-zinc-200 dark:border-zinc-800 p-4 mb-6">
-      <div className="flex justify-between items-center mb-2">
-        <span className="text-sm font-medium">🔥 {streak}-day streak</span>
-        <span className="text-xs text-zinc-500">{badges.length} badge{badges.length !== 1 ? "s" : ""}</span>
+    <div className="rounded-2xl border border-border bg-surface p-6 flex flex-col gap-4 h-full">
+      <div className="flex items-center justify-between">
+        <span className="text-[13px] font-semibold text-ink-2 uppercase tracking-wide">Streak</span>
+        <span className="display text-[26px] font-extrabold text-accent-ink flex items-baseline gap-1">
+          {streak}
+          <span className="text-[13px] font-semibold text-ink-3">days</span>
+        </span>
       </div>
 
-      <div className="flex items-center gap-2 mb-2 text-xs">
-        <span>Daily goal:</span>
-        <input
-          type="number"
-          value={goal}
-          onChange={(e) => updateGoal(Number(e.target.value))}
-          className="w-14 rounded border border-zinc-300 dark:border-zinc-700 bg-transparent px-1 py-0.5"
-        />
-        <span>questions ({solvedToday}/{goal} today)</span>
+      <div className="flex gap-1.5">
+        {Array.from({ length: 7 }).map((_, i) => (
+          <div
+            key={i}
+            className={`flex-1 h-1.5 rounded-full ${i < Math.min(streak, 7) ? "bg-accent" : "bg-border-soft"}`}
+          />
+        ))}
       </div>
-      <div className="h-2 rounded-full bg-zinc-200 dark:bg-zinc-800 overflow-hidden mb-2">
-        <div className="h-full bg-orange-500 transition-all" style={{ width: `${pct}%` }} />
+
+      <div className="border-t border-border-soft pt-4">
+        <div className="flex items-center justify-between text-[13px] mb-2">
+          <span className="text-ink-2">Daily goal</span>
+          <span className="font-semibold flex items-center gap-1">
+            {solvedToday} /
+            <input
+              type="number"
+              value={goal}
+              onChange={(e) => updateGoal(Number(e.target.value))}
+              className="w-10 rounded border border-border bg-transparent px-1 text-center"
+            />
+            Qs
+          </span>
+        </div>
+        <div className="h-2 rounded-full bg-border-soft overflow-hidden">
+          <div className="h-full bg-good rounded-full transition-all" style={{ width: `${pct}%` }} />
+        </div>
       </div>
 
       {badges.length > 0 && (
-        <div className="flex flex-wrap gap-1 mt-2">
+        <div className="flex flex-wrap gap-1.5 pt-1">
           {badges.map((b) => (
-            <span key={b} className="text-[10px] rounded-full bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 px-2 py-0.5">
-              🏅 {b}
+            <span key={b} className="text-[10.5px] rounded-full bg-accent-tint text-accent-ink px-2.5 py-1 font-medium">
+              {b}
             </span>
           ))}
         </div>

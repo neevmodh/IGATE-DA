@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    :root{
+      --bg:#fafaf9; --surface:#ffffff; --border:#e7e5e4; --border-soft:#f0efed;
+      --ink:#1c1917; --ink-2:#57534e; --ink-3:#78716c;
+      --accent:oklch(0.52 0.19 265); --accent-ink:oklch(0.30 0.14 265); --accent-tint:oklch(0.96 0.02 265);
+      --good:oklch(0.55 0.14 155); --good-tint:oklch(0.96 0.03 155);
+      --bad:oklch(0.58 0.19 25); --bad-tint:oklch(0.96 0.04 25);
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;}
+    h1,h2,.display{font-family:'Sora',system-ui,sans-serif;letter-spacing:-0.01em;}
+  </style>
+</helmet>
+
+<div style="max-width:720px;margin:0 auto;padding:44px 40px 80px;">
+
+  <h1 class="display" style="font-size:26px;font-weight:800;margin:0 0 20px;">Results</h1>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;">
+      <div class="display" style="font-size:19px;font-weight:800;color:var(--accent-ink);">18.5 / 26</div>
+      <div style="font-size:11px;color:var(--ink-3);margin-top:2px;">Score</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;">
+      <div class="display" style="font-size:19px;font-weight:800;">71%</div>
+      <div style="font-size:11px;color:var(--ink-3);margin-top:2px;">Accuracy</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;">
+      <div class="display" style="font-size:19px;font-weight:800;color:var(--good);">10</div>
+      <div style="font-size:11px;color:var(--ink-3);margin-top:2px;">Correct</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;">
+      <div class="display" style="font-size:19px;font-weight:800;color:var(--bad);">4</div>
+      <div style="font-size:11px;color:var(--ink-3);margin-top:2px;">Incorrect</div>
+    </div>
+  </div>
+
+  <div style="background:var(--accent-tint);border:1px solid oklch(0.9 0.03 265);border-radius:12px;padding:14px 18px;margin-bottom:28px;font-size:13.5px;color:var(--accent-ink);">
+    <strong>Weak topics this test:</strong> Bayesian Networks, SVD
+  </div>
+
+  <div style="font-size:14px;font-weight:600;margin-bottom:12px;">Review</div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div style="background:var(--good-tint);border:1px solid oklch(0.88 0.05 155);border-radius:12px;padding:16px;">
+      <div style="font-size:11.5px;color:var(--ink-3);margin-bottom:6px;">Machine Learning &mdash; PCA</div>
+      <p style="margin:0 0 6px;font-size:14px;line-height:1.5;">Which of the following are TRUE about Principal Component Analysis (PCA)?</p>
+      <p style="margin:0 0 6px;font-size:12.5px;">Your answer: A, B, D &middot; Correct answer: A, B, D (+2)</p>
+      <p style="margin:0;font-size:12px;color:var(--ink-2);">PCA is unsupervised; it finds orthogonal directions of maximum variance, ordered so the first component captures the most.</p>
+    </div>
+    <div style="background:var(--bad-tint);border:1px solid oklch(0.9 0.06 25);border-radius:12px;padding:16px;">
+      <div style="font-size:11.5px;color:var(--ink-3);margin-bottom:6px;">Artificial Intelligence &mdash; Bayesian Networks</div>
+      <p style="margin:0 0 6px;font-size:14px;line-height:1.5;">In a Bayesian network, if node C has two parents A and B, which factorization is correct?</p>
+      <p style="margin:0 0 6px;font-size:12.5px;">Your answer: B &middot; Correct answer: A (&minus;0.67)</p>
+      <p style="margin:0;font-size:12px;color:var(--ink-2);">The joint decomposes via the chain rule following the DAG's parent structure: P(A)P(B)P(C|A,B).</p>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:12px;margin-top:28px;">
+    <div style="flex:1;background:var(--accent);color:white;border-radius:10px;padding:13px;text-align:center;font-size:14px;font-weight:700;">New test</div>
+    <div style="flex:1;border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:13px;text-align:center;font-size:14px;font-weight:600;">Analyze</div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

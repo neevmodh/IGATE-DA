@@ -30,7 +30,7 @@ export default function Results() {
   if (!data) {
     return (
       <div className="p-10">
-        No recent result found. <Link href="/" className="text-blue-600 underline">Go home</Link>
+        No recent result found. <Link href="/" className="text-accent underline">Go home</Link>
       </div>
     );
   }
@@ -38,7 +38,7 @@ export default function Results() {
   const { testQuestions, answers, attempt } = data;
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-50">
+    <div className="min-h-screen bg-bg text-ink">
       <div className="max-w-2xl mx-auto px-6 py-10">
         <h1 className="text-2xl font-bold mb-6">Results</h1>
 
@@ -69,7 +69,7 @@ export default function Results() {
                     : "border-red-300 bg-red-50 dark:bg-red-950 dark:border-red-800"
                 }`}
               >
-                <div className="text-xs text-zinc-500 mb-1">
+                <div className="text-xs text-ink-3 mb-1">
                   {q.section} — {q.topic}
                 </div>
                 <p className="mb-2 whitespace-pre-wrap">{q.question}</p>
@@ -85,17 +85,17 @@ export default function Results() {
                   Correct answer: {q.correct_answer.join(", ")} ({result.marks >= 0 ? "+" : ""}
                   {result.marks} marks)
                 </p>
-                <p className="text-xs text-zinc-600 dark:text-zinc-400">{q.explanation}</p>
+                <p className="text-xs text-ink-2">{q.explanation}</p>
               </div>
             );
           })}
         </div>
 
         <div className="flex gap-4 mt-8">
-          <Link href="/" className="rounded-md bg-blue-600 text-white px-4 py-2 text-sm">
+          <Link href="/" className="rounded-md bg-accent text-white px-4 py-2 text-sm">
             New test
           </Link>
-          <Link href="/analyze" className="rounded-md border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-sm">
+          <Link href="/analyze" className="rounded-md border border-border px-4 py-2 text-sm">
             Analyze
           </Link>
         </div>
@@ -106,8 +106,8 @@ export default function Results() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-zinc-200 dark:border-zinc-800 p-4">
-      <div className="text-xs text-zinc-500">{label}</div>
+    <div className="rounded-lg border border-border p-4">
+      <div className="text-xs text-ink-3">{label}</div>
       <div className="text-xl font-semibold">{value}</div>
     </div>
   );

@@ -59,18 +59,18 @@ export default function SyllabusTracker() {
   }, [progress]);
 
   return (
-    <div className="rounded-lg border border-zinc-200 dark:border-zinc-800 p-5">
+    <div className="rounded-lg border border-border p-5">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold">Syllabus Progress</h2>
-        <span className="text-sm text-zinc-500">
+        <span className="text-sm text-ink-3">
           {totals.done} / {totals.total} topics done (
           {totals.total ? Math.round((totals.done / totals.total) * 100) : 0}%)
         </span>
       </div>
 
-      <div className="h-2 rounded-full bg-zinc-200 dark:bg-zinc-800 mb-6 overflow-hidden">
+      <div className="h-2 rounded-full bg-border-soft mb-6 overflow-hidden">
         <div
-          className="h-full bg-green-600 transition-all"
+          className="h-full bg-good transition-all"
           style={{ width: `${totals.total ? (totals.done / totals.total) * 100 : 0}%` }}
         />
       </div>
@@ -80,13 +80,13 @@ export default function SyllabusTracker() {
           const sectionDone = s.topics.filter((t) => progress[keyFor(s.section, t)]?.done).length;
           const isOpen = openSections[s.section];
           return (
-            <div key={s.section} className="rounded-md border border-zinc-200 dark:border-zinc-800">
+            <div key={s.section} className="rounded-md border border-border">
               <button
                 onClick={() => setOpenSections((prev) => ({ ...prev, [s.section]: !prev[s.section] }))}
                 className="w-full flex justify-between items-center px-3 py-2 text-left text-sm font-medium"
               >
                 <span>{s.section}</span>
-                <span className="text-zinc-500 text-xs">
+                <span className="text-ink-3 text-xs">
                   {sectionDone}/{s.topics.length} {isOpen ? "▲" : "▼"}
                 </span>
               </button>
@@ -98,7 +98,7 @@ export default function SyllabusTracker() {
                     const p = progress[k] ?? { done: false, note: "" };
                     const draft = noteDrafts[k] ?? p.note;
                     return (
-                      <div key={t} className="rounded-md bg-zinc-50 dark:bg-zinc-900 p-2">
+                      <div key={t} className="rounded-md bg-border-soft p-2">
                         <label className="flex items-start gap-2 text-sm cursor-pointer">
                           <input
                             type="checkbox"
@@ -106,7 +106,7 @@ export default function SyllabusTracker() {
                             onChange={() => toggleDone(s.section, t)}
                             className="mt-1"
                           />
-                          <span className={p.done ? "line-through text-zinc-500" : ""}>{t}</span>
+                          <span className={p.done ? "line-through text-ink-3" : ""}>{t}</span>
                         </label>
                         <textarea
                           value={draft}
@@ -116,7 +116,7 @@ export default function SyllabusTracker() {
                           onBlur={(e) => saveNote(s.section, t, e.target.value)}
                           placeholder="Notes (formulas, doubts, links)…"
                           rows={draft ? undefined : 1}
-                          className="w-full mt-1 text-xs rounded border border-zinc-200 dark:border-zinc-800 bg-transparent px-2 py-1 resize-y"
+                          className="w-full mt-1 text-xs rounded border border-border bg-transparent px-2 py-1 resize-y"
                         />
                       </div>
                     );

@@ -47,15 +47,15 @@ export default function Calculator({ onClose }: { onClose: () => void }) {
   ];
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 w-72 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-xl p-3">
+    <div className="fixed bottom-4 right-4 z-50 w-72 rounded-lg border border-border bg-surface shadow-xl p-3">
       <div className="flex justify-between items-center mb-2">
         <span className="text-sm font-medium">Calculator</span>
-        <button onClick={onClose} className="text-xs text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200">
+        <button onClick={onClose} className="text-xs text-ink-3 hover:text-ink">
           ✕
         </button>
       </div>
-      <div className="rounded-md border border-zinc-200 dark:border-zinc-800 mb-2 p-2 text-right">
-        <div className="text-xs text-zinc-500 h-4 overflow-hidden">{expr || "0"}</div>
+      <div className="rounded-md border border-border mb-2 p-2 text-right">
+        <div className="text-xs text-ink-3 h-4 overflow-hidden">{expr || "0"}</div>
         <div className="text-lg font-mono">{result}</div>
       </div>
       <div className="grid grid-cols-5 gap-1">
@@ -63,17 +63,17 @@ export default function Calculator({ onClose }: { onClose: () => void }) {
           <button
             key={b}
             onClick={() => (b === "=" ? evaluate() : press(b))}
-            className="rounded bg-zinc-100 dark:bg-zinc-800 text-xs py-1.5 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+            className="rounded bg-border-soft text-xs py-1.5 hover:bg-border"
           >
             {b}
           </button>
         ))}
       </div>
       <div className="flex gap-1 mt-1">
-        <button onClick={backspace} className="flex-1 rounded bg-zinc-100 dark:bg-zinc-800 text-xs py-1.5">
+        <button onClick={backspace} className="flex-1 rounded bg-border-soft text-xs py-1.5">
           ⌫
         </button>
-        <button onClick={clear} className="flex-1 rounded bg-zinc-100 dark:bg-zinc-800 text-xs py-1.5">
+        <button onClick={clear} className="flex-1 rounded bg-border-soft text-xs py-1.5">
           Clear
         </button>
       </div>

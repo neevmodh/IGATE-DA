@@ -34,11 +34,11 @@ export default function Builder() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-50">
+    <div className="min-h-screen bg-bg text-ink">
       <div className="max-w-2xl mx-auto px-6 py-10">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold">Custom Test Builder</h1>
-          <Link href="/" className="text-blue-600 hover:underline text-sm">
+          <Link href="/" className="text-accent hover:underline text-sm">
             ← Home
           </Link>
         </div>
@@ -53,8 +53,8 @@ export default function Builder() {
                   onClick={() => toggleSection(s)}
                   className={`rounded-full border px-3 py-1 text-xs ${
                     selectedSections.includes(s)
-                      ? "border-blue-600 bg-blue-600 text-white"
-                      : "border-zinc-300 dark:border-zinc-700"
+                      ? "border-accent bg-accent text-white"
+                      : "border-border"
                   }`}
                 >
                   {s}
@@ -72,8 +72,8 @@ export default function Builder() {
                   onClick={() => toggleDifficulty(d)}
                   className={`rounded-full border px-3 py-1 text-xs capitalize ${
                     difficulties.includes(d)
-                      ? "border-blue-600 bg-blue-600 text-white"
-                      : "border-zinc-300 dark:border-zinc-700"
+                      ? "border-accent bg-accent text-white"
+                      : "border-border"
                   }`}
                 >
                   {d}
@@ -90,15 +90,15 @@ export default function Builder() {
               max={Math.max(matchCount, 1)}
               value={count}
               onChange={(e) => setCount(Number(e.target.value))}
-              className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-transparent px-3 py-2"
+              className="w-full rounded-md border border-border bg-transparent px-3 py-2"
             />
-            <p className="text-xs text-zinc-500 mt-1">{matchCount} questions match this filter</p>
+            <p className="text-xs text-ink-3 mt-1">{matchCount} questions match this filter</p>
           </div>
 
           <button
             onClick={start}
             disabled={matchCount === 0}
-            className="w-full rounded-lg bg-blue-600 text-white py-3 font-medium disabled:opacity-40"
+            className="w-full rounded-lg bg-accent text-white py-3 font-medium disabled:opacity-40"
           >
             Start Custom Test
           </button>

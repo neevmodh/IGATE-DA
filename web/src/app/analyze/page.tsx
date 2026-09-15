@@ -53,11 +53,11 @@ export default function Analyze() {
   const testsTaken = history.length;
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-50">
+    <div className="min-h-screen bg-bg text-ink">
       <div className="max-w-2xl mx-auto px-6 py-10">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold">Analyze</h1>
-          <Link href="/" className="text-blue-600 hover:underline text-sm">
+          <Link href="/" className="text-accent hover:underline text-sm">
             ← Home
           </Link>
         </div>
@@ -69,16 +69,16 @@ export default function Analyze() {
         </div>
 
         {latestFullMockPct && (
-          <div className="mb-6 rounded-lg border border-blue-300 bg-blue-50 dark:bg-blue-950 dark:border-blue-800 p-4 text-sm">
+          <div className="mb-6 rounded-lg border border-accent-tint bg-accent-tint p-4 text-sm">
             <strong>Latest full mock:</strong> {latestFullMockPct.marks_scored} / {latestFullMockPct.max_marks} marks.
             Rough GATE DA qualifying cutoff (General, {Object.keys(cutoffs.byYear).slice(-1)[0]}) is ~{latestCutoff} —{" "}
             {latestFullMockPct.marks_scored >= latestCutoff ? "you'd be above it. " : "you'd be below it. "}
-            <span className="text-zinc-500">({cutoffs.note})</span>
+            <span className="text-ink-3">({cutoffs.note})</span>
           </div>
         )}
 
         {trendPoints.length > 1 && (
-          <div className="mb-6 rounded-lg border border-zinc-200 dark:border-zinc-800 p-4">
+          <div className="mb-6 rounded-lg border border-border p-4">
             <div className="text-sm font-medium mb-2">Accuracy trend</div>
             <TrendChart points={trendPoints} />
           </div>
@@ -94,7 +94,7 @@ export default function Analyze() {
                   <span
                     key={t}
                     style={{ backgroundColor: `rgba(220, 38, 38, ${0.15 + intensity * 0.6})` }}
-                    className="rounded px-2 py-1 text-xs text-zinc-900 dark:text-white"
+                    className="rounded px-2 py-1 text-xs text-ink"
                   >
                     {t} ({s.misses}x)
                   </span>
@@ -105,13 +105,13 @@ export default function Analyze() {
         )}
 
         {history.length === 0 ? (
-          <p className="text-zinc-500">No tests taken yet.</p>
+          <p className="text-ink-3">No tests taken yet.</p>
         ) : (
           <>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="text-left border-b border-zinc-300 dark:border-zinc-700">
+                  <tr className="text-left border-b border-border">
                     <th className="py-2 pr-3">Date</th>
                     <th className="py-2 pr-3">Scope</th>
                     <th className="py-2 pr-3">Score</th>
@@ -120,7 +120,7 @@ export default function Analyze() {
                 </thead>
                 <tbody>
                   {history.map((h, i) => (
-                    <tr key={i} className="border-b border-zinc-200 dark:border-zinc-800">
+                    <tr key={i} className="border-b border-border">
                       <td className="py-2 pr-3">{new Date(h.date).toLocaleString()}</td>
                       <td className="py-2 pr-3">{h.scope}</td>
                       <td className="py-2 pr-3">
@@ -135,11 +135,11 @@ export default function Analyze() {
             <div className="flex gap-4 mt-6">
               <button
                 onClick={downloadCSV}
-                className="rounded-md border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-sm"
+                className="rounded-md border border-border px-4 py-2 text-sm"
               >
                 Export CSV (for scores/history.csv in repo)
               </button>
-              <Link href="/mistakes" className="rounded-md border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-sm">
+              <Link href="/mistakes" className="rounded-md border border-border px-4 py-2 text-sm">
                 Mistake Notebook →
               </Link>
             </div>
@@ -152,9 +152,9 @@ export default function Analyze() {
 
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-zinc-200 dark:border-zinc-800 p-3 text-center">
+    <div className="rounded-lg border border-border p-3 text-center">
       <div className="text-lg font-semibold">{value}</div>
-      <div className="text-[11px] text-zinc-500">{label}</div>
+      <div className="text-[11px] text-ink-3">{label}</div>
     </div>
   );
 }
@@ -168,9 +168,9 @@ function TrendChart({ points }: { points: number[] }) {
 
   return (
     <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-28" preserveAspectRatio="none">
-      <polyline points={coords} fill="none" stroke="currentColor" className="text-blue-600" strokeWidth={2} />
+      <polyline points={coords} fill="none" stroke="currentColor" className="text-accent" strokeWidth={2} />
       {points.map((p, i) => (
-        <circle key={i} cx={i * stepX} cy={h - (p / max) * h} r={3} className="fill-blue-600" />
+        <circle key={i} cx={i * stepX} cy={h - (p / max) * h} r={3} className="fill-accent" />
       ))}
     </svg>
   );

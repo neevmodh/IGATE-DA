@@ -38,11 +38,11 @@ export default function Browse() {
   });
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-50">
+    <div className="min-h-screen bg-bg text-ink">
       <div className="max-w-2xl mx-auto px-6 py-10">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold">Browse Questions</h1>
-          <Link href="/" className="text-blue-600 hover:underline text-sm">
+          <Link href="/" className="text-accent hover:underline text-sm">
             ← Home
           </Link>
         </div>
@@ -52,14 +52,14 @@ export default function Browse() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search question text or tag…"
-            className="col-span-2 rounded-md border border-zinc-300 dark:border-zinc-700 bg-transparent px-3 py-2 text-sm"
+            className="col-span-2 rounded-md border border-border bg-transparent px-3 py-2 text-sm"
           />
-          <select value={section} onChange={(e) => setSection(e.target.value)} className="rounded-md border border-zinc-300 dark:border-zinc-700 bg-transparent px-3 py-2 text-sm">
+          <select value={section} onChange={(e) => setSection(e.target.value)} className="rounded-md border border-border bg-transparent px-3 py-2 text-sm">
             {sections.map((s) => (
               <option key={s} value={s}>{s}</option>
             ))}
           </select>
-          <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)} className="rounded-md border border-zinc-300 dark:border-zinc-700 bg-transparent px-3 py-2 text-sm">
+          <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)} className="rounded-md border border-border bg-transparent px-3 py-2 text-sm">
             {["All", "easy", "medium", "hard"].map((d) => (
               <option key={d} value={d}>{d}</option>
             ))}
@@ -67,7 +67,7 @@ export default function Browse() {
           <select
             value={sourceFilter}
             onChange={(e) => setSourceFilter(e.target.value as "All" | "PYQ" | "Generated")}
-            className="col-span-2 rounded-md border border-zinc-300 dark:border-zinc-700 bg-transparent px-3 py-2 text-sm"
+            className="col-span-2 rounded-md border border-border bg-transparent px-3 py-2 text-sm"
           >
             <option value="All">All sources</option>
             <option value="PYQ">Past year questions only</option>
@@ -75,13 +75,13 @@ export default function Browse() {
           </select>
         </div>
 
-        <p className="text-xs text-zinc-500 mb-4">{filtered.length} questions</p>
+        <p className="text-xs text-ink-3 mb-4">{filtered.length} questions</p>
 
         <div className="space-y-3">
           {filtered.map((q) => (
-            <div key={q.id} className="rounded-lg border border-zinc-200 dark:border-zinc-800 p-4 text-sm">
+            <div key={q.id} className="rounded-lg border border-border p-4 text-sm">
               <div className="flex justify-between items-start mb-1">
-                <span className="text-xs text-zinc-500">
+                <span className="text-xs text-ink-3">
                   {q.section} — {q.topic} · {q.difficulty} · {q.source}
                 </span>
                 <button onClick={() => toggleBookmark(q.id)} className="text-xs">

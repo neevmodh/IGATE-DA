@@ -32,15 +32,15 @@ export default function Mistakes() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-50">
+    <div className="min-h-screen bg-bg text-ink">
       <div className="max-w-2xl mx-auto px-6 py-10">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold">Mistake Notebook</h1>
-          <Link href="/" className="text-blue-600 hover:underline text-sm">
+          <Link href="/" className="text-accent hover:underline text-sm">
             ← Home
           </Link>
         </div>
-        <p className="text-sm text-zinc-500 mb-4">
+        <p className="text-sm text-ink-3 mb-4">
           Every question you've ever gotten wrong, auto-collected across all tests. Review these before your next mock.
         </p>
 
@@ -54,25 +54,25 @@ export default function Mistakes() {
         )}
 
         {entries.length === 0 ? (
-          <p className="text-zinc-500">No mistakes logged yet — good sign, or you haven't taken a test yet.</p>
+          <p className="text-ink-3">No mistakes logged yet — good sign, or you haven't taken a test yet.</p>
         ) : (
           <div className="space-y-4">
             {entries.map(([id, m]) => (
               <div key={id} className="rounded-lg border border-red-300 bg-red-50 dark:bg-red-950 dark:border-red-800 p-4 text-sm">
                 <div className="flex justify-between items-start mb-1">
-                  <span className="text-xs text-zinc-500">
+                  <span className="text-xs text-ink-3">
                     {m.question.section} — {m.question.topic} · missed {m.timesMissed}x ·{" "}
                     {isDue(m.lastMissedAt, m.timesMissed)
                       ? "due now"
                       : `due ${nextDueDate(m.lastMissedAt, m.timesMissed).toLocaleDateString()}`}
                   </span>
-                  <button onClick={() => clearMistake(id)} className="text-xs text-zinc-500 hover:underline">
+                  <button onClick={() => clearMistake(id)} className="text-xs text-ink-3 hover:underline">
                     Mark resolved
                   </button>
                 </div>
                 <p className="mb-2 whitespace-pre-wrap">{m.question.question}</p>
                 <p className="text-xs mb-1">Correct answer: {m.question.correct_answer.join(", ")}</p>
-                <p className="text-xs text-zinc-600 dark:text-zinc-400">{m.question.explanation}</p>
+                <p className="text-xs text-ink-2">{m.question.explanation}</p>
               </div>
             ))}
           </div>

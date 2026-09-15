@@ -164,9 +164,9 @@ function TestInner() {
   }
 
   const statusColor: Record<QStatus, string> = {
-    "not-visited": "bg-zinc-300 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300",
+    "not-visited": "bg-border-soft text-ink-3",
     "not-answered": "bg-red-500 text-white",
-    answered: "bg-green-600 text-white",
+    answered: "bg-good text-white",
     marked: "bg-purple-600 text-white",
     "answered-marked": "bg-purple-600 text-white ring-2 ring-green-400",
   };
@@ -238,17 +238,17 @@ function TestInner() {
   const ss = String(secondsLeft % 60).padStart(2, "0");
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-50">
+    <div className="min-h-screen bg-bg text-ink">
       <div className="max-w-5xl mx-auto px-4 py-6 flex gap-6">
         <div className="flex-1 max-w-2xl">
           <div className="flex justify-between items-center mb-6">
-            <span className="text-sm text-zinc-500">
+            <span className="text-sm text-ink-3">
               Question {current + 1} / {testQuestions.length}
             </span>
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setShowCalc((v) => !v)}
-                className="text-xs rounded border border-zinc-300 dark:border-zinc-700 px-2 py-1"
+                className="text-xs rounded border border-border px-2 py-1"
               >
                 🧮 Calculator
               </button>
@@ -258,8 +258,8 @@ function TestInner() {
             </div>
           </div>
 
-          <div className="rounded-lg border border-zinc-200 dark:border-zinc-800 p-6">
-            <div className="text-xs text-zinc-500 mb-2">
+          <div className="rounded-lg border border-border p-6">
+            <div className="text-xs text-ink-3 mb-2">
               {q.section} — {q.topic} · {q.type} · {q.marks} mark{q.marks > 1 ? "s" : ""}
             </div>
             <p className="mb-4 whitespace-pre-wrap">{q.question}</p>
@@ -273,8 +273,8 @@ function TestInner() {
                     key={opt}
                     className={`block cursor-pointer rounded-md border px-3 py-2 mb-2 text-sm ${
                       selected
-                        ? "border-blue-600 bg-blue-50 dark:bg-blue-950"
-                        : "border-zinc-200 dark:border-zinc-800"
+                        ? "border-accent bg-accent-tint"
+                        : "border-border"
                     }`}
                   >
                     <input
@@ -298,8 +298,8 @@ function TestInner() {
                     key={opt}
                     className={`block cursor-pointer rounded-md border px-3 py-2 mb-2 text-sm ${
                       selected
-                        ? "border-blue-600 bg-blue-50 dark:bg-blue-950"
-                        : "border-zinc-200 dark:border-zinc-800"
+                        ? "border-accent bg-accent-tint"
+                        : "border-border"
                     }`}
                   >
                     <input
@@ -320,7 +320,7 @@ function TestInner() {
                 value={(answers[q.id] as number) ?? ""}
                 onChange={(e) => setAnswer(e.target.value === "" ? null : Number(e.target.value))}
                 placeholder="Enter numeric answer"
-                className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-transparent px-3 py-2"
+                className="w-full rounded-md border border-border bg-transparent px-3 py-2"
               />
             )}
           </div>
@@ -329,7 +329,7 @@ function TestInner() {
             <button
               disabled={current === 0}
               onClick={() => goTo(current - 1)}
-              className="rounded-md border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-sm disabled:opacity-40"
+              className="rounded-md border border-border px-4 py-2 text-sm disabled:opacity-40"
             >
               Previous
             </button>
@@ -338,7 +338,7 @@ function TestInner() {
               className={`rounded-md border px-4 py-2 text-sm ${
                 marked[q.id]
                   ? "border-purple-600 bg-purple-600 text-white"
-                  : "border-zinc-300 dark:border-zinc-700"
+                  : "border-border"
               }`}
             >
               {marked[q.id] ? "Unmark Review" : "Mark for Review"}
@@ -346,14 +346,14 @@ function TestInner() {
             {current < testQuestions.length - 1 ? (
               <button
                 onClick={() => goTo(current + 1)}
-                className="rounded-md bg-blue-600 text-white px-4 py-2 text-sm"
+                className="rounded-md bg-accent text-white px-4 py-2 text-sm"
               >
                 Save & Next
               </button>
             ) : (
               <button
                 onClick={handleSubmit}
-                className="rounded-md bg-green-600 text-white px-4 py-2 text-sm"
+                className="rounded-md bg-good text-white px-4 py-2 text-sm"
               >
                 Submit Test
               </button>
@@ -362,7 +362,7 @@ function TestInner() {
         </div>
 
         <aside className="w-56 shrink-0 hidden md:block">
-          <div className="rounded-lg border border-zinc-200 dark:border-zinc-800 p-3 sticky top-6">
+          <div className="rounded-lg border border-border p-3 sticky top-6">
             <div className="text-sm font-medium mb-2">Question Palette</div>
             <div className="grid grid-cols-5 gap-1 mb-3">
               {testQuestions.map((tq, i) => (
@@ -370,22 +370,22 @@ function TestInner() {
                   key={tq.id}
                   onClick={() => goTo(i)}
                   className={`rounded text-xs h-7 w-7 flex items-center justify-center ${statusColor[statusOf(tq)]} ${
-                    i === current ? "ring-2 ring-blue-500" : ""
+                    i === current ? "ring-2 ring-accent" : ""
                   }`}
                 >
                   {i + 1}
                 </button>
               ))}
             </div>
-            <div className="space-y-1 text-[11px] text-zinc-600 dark:text-zinc-400">
-              <Legend color="bg-zinc-300 dark:bg-zinc-700" label="Not visited" />
+            <div className="space-y-1 text-[11px] text-ink-2">
+              <Legend color="bg-border-soft" label="Not visited" />
               <Legend color="bg-red-500" label="Not answered" />
-              <Legend color="bg-green-600" label="Answered" />
+              <Legend color="bg-good" label="Answered" />
               <Legend color="bg-purple-600" label="Marked for review" />
             </div>
             <button
               onClick={handleSubmit}
-              className="w-full mt-4 rounded-md bg-green-600 text-white py-2 text-sm"
+              className="w-full mt-4 rounded-md bg-good text-white py-2 text-sm"
             >
               Submit Test
             </button>

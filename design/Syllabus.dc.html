@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    :root{
+      --bg:#fafaf9; --surface:#ffffff; --border:#e7e5e4; --border-soft:#f0efed;
+      --ink:#1c1917; --ink-2:#57534e; --ink-3:#78716c;
+      --accent:oklch(0.52 0.19 265); --accent-ink:oklch(0.30 0.14 265); --accent-tint:oklch(0.96 0.02 265);
+      --good:oklch(0.55 0.14 155); --good-tint:oklch(0.96 0.03 155);
+      --warn:oklch(0.60 0.17 30); --warn-tint:oklch(0.96 0.04 55);
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;}
+    h1,h2,h3,.display{font-family:'Sora',system-ui,sans-serif;letter-spacing:-0.01em;}
+    a{color:var(--accent);text-decoration:none;} a:hover{color:var(--accent-ink);}
+  </style>
+</helmet>
+
+<div style="min-height:100%;background:var(--bg);">
+
+  <div style="position:sticky;top:0;z-index:10;background:var(--surface);border-bottom:1px solid var(--border);">
+    <div style="max-width:1120px;margin:0 auto;padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:32px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:30px;height:30px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M6 10v10h12V10"/><path d="M10 20v-6h4v6"/></svg>
+          </div>
+          <span class="display" style="font-size:16px;font-weight:700;">I-GATE</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:2px;">
+          <div style="padding:8px 14px;border-radius:8px;color:var(--ink-3);font-weight:500;font-size:13.5px;">Home</div>
+          <div style="padding:8px 14px;border-radius:8px;color:var(--ink-3);font-weight:500;font-size:13.5px;">Practice</div>
+          <div style="padding:8px 14px;border-radius:8px;color:var(--ink-3);font-weight:500;font-size:13.5px;">Analyze</div>
+          <div style="padding:8px 14px;border-radius:8px;background:var(--accent-tint);color:var(--accent-ink);font-weight:700;font-size:13.5px;">Syllabus</div>
+          <div style="padding:8px 14px;border-radius:8px;color:var(--ink-3);font-weight:500;font-size:13.5px;display:flex;align-items:center;gap:4px;">More <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></div>
+        </div>
+      </div>
+      <div style="width:30px;height:30px;border-radius:999px;background:var(--accent-tint);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;">N</div>
+    </div>
+  </div>
+
+  <div style="max-width:720px;margin:0 auto;padding:36px 40px 80px;">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <h1 class="display" style="font-size:26px;font-weight:800;margin:0;">Syllabus Progress</h1>
+      <span style="font-size:13px;color:var(--ink-3);">61 / 85 topics &middot; 72%</span>
+    </div>
+
+    <div style="height:8px;border-radius:99px;background:var(--border-soft);overflow:hidden;margin-bottom:28px;">
+      <div style="height:100%;width:72%;background:var(--good);border-radius:99px;"></div>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:12px;overflow:hidden;">
+      <div style="padding:14px 18px;display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:600;">
+        <span>Machine Learning</span>
+        <span style="font-size:12.5px;color:var(--ink-3);font-weight:500;">14 / 19</span>
+      </div>
+      <div style="border-top:1px solid var(--border-soft);padding:14px 18px;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:18px;height:18px;border-radius:5px;background:var(--good);display:flex;align-items:center;justify-content:center;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <span style="font-size:13.5px;color:var(--ink-3);text-decoration:line-through;">Linear regression</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:18px;height:18px;border-radius:5px;border:1.5px solid var(--border);"></div>
+          <span style="font-size:13.5px;">PCA &amp; dimensionality reduction</span>
+        </div>
+        <div style="margin-left:28px;border:1px solid var(--border-soft);border-radius:8px;padding:8px 10px;font-size:12px;color:var(--ink-3);background:var(--border-soft);">
+          Note: revisit eigenvector derivation, mixed up with SVD last test
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:600;">
+      <span>Probability and Statistics</span>
+      <span style="font-size:12.5px;color:var(--ink-3);font-weight:500;">9 / 14</span>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
