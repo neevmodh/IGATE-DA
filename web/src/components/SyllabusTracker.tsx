@@ -59,7 +59,7 @@ export default function SyllabusTracker() {
   }, [progress]);
 
   return (
-    <div className="rounded-lg border border-border p-5">
+    <div className="rounded-lg border border-border shadow-sm p-5">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold">Syllabus Progress</h2>
         <span className="text-sm text-ink-3">
@@ -80,7 +80,7 @@ export default function SyllabusTracker() {
           const sectionDone = s.topics.filter((t) => progress[keyFor(s.section, t)]?.done).length;
           const isOpen = openSections[s.section];
           return (
-            <div key={s.section} className="rounded-md border border-border">
+            <div key={s.section} className="rounded-md border border-border shadow-sm">
               <button
                 onClick={() => setOpenSections((prev) => ({ ...prev, [s.section]: !prev[s.section] }))}
                 className="w-full flex justify-between items-center px-3 py-2 text-left text-sm font-medium"
@@ -116,7 +116,7 @@ export default function SyllabusTracker() {
                           onBlur={(e) => saveNote(s.section, t, e.target.value)}
                           placeholder="Notes (formulas, doubts, links)…"
                           rows={draft ? undefined : 1}
-                          className="w-full mt-1 text-xs rounded border border-border bg-transparent px-2 py-1 resize-y"
+                          className="w-full mt-1 text-xs rounded border border-border shadow-sm bg-transparent px-2 py-1 resize-y"
                         />
                       </div>
                     );

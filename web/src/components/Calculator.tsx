@@ -47,14 +47,14 @@ export default function Calculator({ onClose }: { onClose: () => void }) {
   ];
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 w-72 rounded-lg border border-border bg-surface shadow-xl p-3">
+    <div className="fixed bottom-4 right-4 z-50 w-72 rounded-lg border border-border shadow-sm bg-surface shadow-xl p-3">
       <div className="flex justify-between items-center mb-2">
         <span className="text-sm font-medium">Calculator</span>
         <button onClick={onClose} className="text-xs text-ink-3 hover:text-ink">
           ✕
         </button>
       </div>
-      <div className="rounded-md border border-border mb-2 p-2 text-right">
+      <div className="rounded-md border border-border shadow-sm mb-2 p-2 text-right">
         <div className="text-xs text-ink-3 h-4 overflow-hidden">{expr || "0"}</div>
         <div className="text-lg font-mono">{result}</div>
       </div>

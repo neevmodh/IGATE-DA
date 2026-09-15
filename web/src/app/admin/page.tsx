@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { useState } from "react";
 import Link from "next/link";
 import { Question, QType } from "@/lib/types";
@@ -57,7 +59,7 @@ export default function Admin() {
     <div className="min-h-screen bg-bg text-ink">
       <div className="max-w-2xl mx-auto px-6 py-10">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">Question Editor</h1>
+          <div className="flex items-center gap-2.5"><Image src="/gate-logo.svg" alt="" width={22} height={20} /><h1 className="text-2xl font-bold">Question Editor</h1></div>
           <Link href="/" className="text-accent hover:underline text-sm">
             ← Home
           </Link>
@@ -66,31 +68,31 @@ export default function Admin() {
           Add questions here, then download the JSON and merge it into <code>question_bank/questions.json</code> in the repo (append to the array), commit, and push — Railway redeploys automatically.
         </p>
 
-        <div className="space-y-3 rounded-lg border border-border p-4">
+        <div className="space-y-3 rounded-lg border border-border shadow-sm p-4">
           <input
             placeholder="ID (e.g. ML-0004)"
             value={form.id}
             onChange={(e) => update("id", e.target.value)}
-            className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm"
+            className="w-full rounded-md border border-border shadow-sm bg-transparent px-3 py-2 text-sm"
           />
-          <select value={form.section} onChange={(e) => update("section", e.target.value)} className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm">
+          <select value={form.section} onChange={(e) => update("section", e.target.value)} className="w-full rounded-md border border-border shadow-sm bg-transparent px-3 py-2 text-sm">
             {sections.map((s) => <option key={s} value={s}>{s}</option>)}
           </select>
           <input
             placeholder="Topic"
             value={form.topic}
             onChange={(e) => update("topic", e.target.value)}
-            className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm"
+            className="w-full rounded-md border border-border shadow-sm bg-transparent px-3 py-2 text-sm"
           />
           <div className="flex gap-2">
-            <select value={form.type} onChange={(e) => update("type", e.target.value as QType)} className="flex-1 rounded-md border border-border bg-transparent px-3 py-2 text-sm">
+            <select value={form.type} onChange={(e) => update("type", e.target.value as QType)} className="flex-1 rounded-md border border-border shadow-sm bg-transparent px-3 py-2 text-sm">
               {["MCQ", "MSQ", "NAT"].map((t) => <option key={t} value={t}>{t}</option>)}
             </select>
-            <select value={form.marks} onChange={(e) => update("marks", Number(e.target.value))} className="flex-1 rounded-md border border-border bg-transparent px-3 py-2 text-sm">
+            <select value={form.marks} onChange={(e) => update("marks", Number(e.target.value))} className="flex-1 rounded-md border border-border shadow-sm bg-transparent px-3 py-2 text-sm">
               <option value={1}>1 mark</option>
               <option value={2}>2 marks</option>
             </select>
-            <select value={form.difficulty} onChange={(e) => update("difficulty", e.target.value)} className="flex-1 rounded-md border border-border bg-transparent px-3 py-2 text-sm">
+            <select value={form.difficulty} onChange={(e) => update("difficulty", e.target.value)} className="flex-1 rounded-md border border-border shadow-sm bg-transparent px-3 py-2 text-sm">
               {["easy", "medium", "hard"].map((d) => <option key={d} value={d}>{d}</option>)}
             </select>
           </div>
@@ -99,7 +101,7 @@ export default function Admin() {
             value={form.question}
             onChange={(e) => update("question", e.target.value)}
             rows={3}
-            className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm"
+            className="w-full rounded-md border border-border shadow-sm bg-transparent px-3 py-2 text-sm"
           />
           {form.type !== "NAT" && (
             <textarea
@@ -107,7 +109,7 @@ export default function Admin() {
               value={form.options.join("\n")}
               onChange={(e) => update("options", e.target.value.split("\n"))}
               rows={4}
-              className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm"
+              className="w-full rounded-md border border-border shadow-sm bg-transparent px-3 py-2 text-sm"
             />
           )}
           <input
@@ -119,20 +121,20 @@ export default function Admin() {
                 form.type === "NAT" ? [Number(e.target.value)] : e.target.value.split(",").map((s) => s.trim())
               )
             }
-            className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm"
+            className="w-full rounded-md border border-border shadow-sm bg-transparent px-3 py-2 text-sm"
           />
           <textarea
             placeholder="Explanation"
             value={form.explanation}
             onChange={(e) => update("explanation", e.target.value)}
             rows={2}
-            className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm"
+            className="w-full rounded-md border border-border shadow-sm bg-transparent px-3 py-2 text-sm"
           />
           <input
             placeholder="Tags, comma-separated"
             value={form.tags.join(",")}
             onChange={(e) => update("tags", e.target.value.split(",").map((s) => s.trim()).filter(Boolean))}
-            className="w-full rounded-md border border-border bg-transparent px-3 py-2 text-sm"
+            className="w-full rounded-md border border-border shadow-sm bg-transparent px-3 py-2 text-sm"
           />
           <button onClick={addToDraft} className="w-full rounded-md bg-accent text-white py-2 text-sm">
             Add to draft ({draft.length})

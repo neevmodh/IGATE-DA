@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -32,7 +34,7 @@ export default function Practice() {
     <div className="min-h-screen bg-bg text-ink">
       <main className="max-w-2xl mx-auto px-6 py-10">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">Practice</h1>
+          <div className="flex items-center gap-2.5"><Image src="/gate-logo.svg" alt="" width={22} height={20} /><h1 className="text-2xl font-bold">Practice</h1></div>
           <Link href="/" className="text-accent hover:underline text-sm">
             ← Home
           </Link>
@@ -63,13 +65,13 @@ export default function Practice() {
           </div>
 
           {mode === "topic" && (
-            <div className="space-y-4 rounded-lg border border-border p-5">
+            <div className="space-y-4 rounded-lg border border-border shadow-sm p-5">
               <div>
                 <label className="block text-sm font-medium mb-1">Section</label>
                 <select
                   value={section}
                   onChange={(e) => setSection(e.target.value)}
-                  className="w-full rounded-md border border-border bg-transparent px-3 py-2"
+                  className="w-full rounded-md border border-border shadow-sm bg-transparent px-3 py-2"
                 >
                   {sections.map((s) => (
                     <option key={s} value={s}>
@@ -87,14 +89,14 @@ export default function Practice() {
                   max={Math.max(availableInSection, 1)}
                   value={count}
                   onChange={(e) => setCount(Number(e.target.value))}
-                  className="w-full rounded-md border border-border bg-transparent px-3 py-2"
+                  className="w-full rounded-md border border-border shadow-sm bg-transparent px-3 py-2"
                 />
               </div>
             </div>
           )}
 
           {mode === "full" && (
-            <div className="rounded-lg border border-border p-5 text-sm text-ink-2">
+            <div className="rounded-lg border border-border shadow-sm p-5 text-sm text-ink-2">
               Full mock uses the official GATE DA pattern: 65 questions, 100 marks, MCQ/MSQ/NAT, negative
               marking, 3-hour timer, question palette, and mark-for-review — same as the real exam.
             </div>

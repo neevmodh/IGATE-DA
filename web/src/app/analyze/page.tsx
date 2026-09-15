@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Attempt } from "@/lib/types";
@@ -56,7 +58,7 @@ export default function Analyze() {
     <div className="min-h-screen bg-bg text-ink">
       <div className="max-w-2xl mx-auto px-6 py-10">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">Analyze</h1>
+          <div className="flex items-center gap-2.5"><Image src="/gate-logo.svg" alt="" width={22} height={20} /><h1 className="text-2xl font-bold">Analyze</h1></div>
           <Link href="/" className="text-accent hover:underline text-sm">
             ← Home
           </Link>
@@ -78,7 +80,7 @@ export default function Analyze() {
         )}
 
         {trendPoints.length > 1 && (
-          <div className="mb-6 rounded-lg border border-border p-4">
+          <div className="mb-6 rounded-lg border border-border shadow-sm p-4">
             <div className="text-sm font-medium mb-2">Accuracy trend</div>
             <TrendChart points={trendPoints} />
           </div>
@@ -108,25 +110,25 @@ export default function Analyze() {
           <p className="text-ink-3">No tests taken yet.</p>
         ) : (
           <>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto rounded-xl border border-border shadow-sm">
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="text-left border-b border-border">
-                    <th className="py-2 pr-3">Date</th>
-                    <th className="py-2 pr-3">Scope</th>
-                    <th className="py-2 pr-3">Score</th>
-                    <th className="py-2 pr-3">Accuracy</th>
+                  <tr className="text-left bg-border-soft">
+                    <th className="py-2.5 px-3.5 font-semibold text-ink-2 border-b border-border">Date</th>
+                    <th className="py-2.5 px-3.5 font-semibold text-ink-2 border-b border-border">Scope</th>
+                    <th className="py-2.5 px-3.5 font-semibold text-ink-2 border-b border-border">Score</th>
+                    <th className="py-2.5 px-3.5 font-semibold text-ink-2 border-b border-border">Accuracy</th>
                   </tr>
                 </thead>
                 <tbody>
                   {history.map((h, i) => (
-                    <tr key={i} className="border-b border-border">
-                      <td className="py-2 pr-3">{new Date(h.date).toLocaleString()}</td>
-                      <td className="py-2 pr-3">{h.scope}</td>
-                      <td className="py-2 pr-3">
+                    <tr key={i} className="border-b border-border last:border-b-0 hover:bg-border-soft/50">
+                      <td className="py-2.5 px-3.5">{new Date(h.date).toLocaleString()}</td>
+                      <td className="py-2.5 px-3.5">{h.scope}</td>
+                      <td className="py-2.5 px-3.5">
                         {h.marks_scored} / {h.max_marks}
                       </td>
-                      <td className="py-2 pr-3">{h.accuracy_pct}%</td>
+                      <td className="py-2.5 px-3.5">{h.accuracy_pct}%</td>
                     </tr>
                   ))}
                 </tbody>
@@ -135,11 +137,11 @@ export default function Analyze() {
             <div className="flex gap-4 mt-6">
               <button
                 onClick={downloadCSV}
-                className="rounded-md border border-border px-4 py-2 text-sm"
+                className="rounded-md border border-border shadow-sm px-4 py-2 text-sm"
               >
                 Export CSV (for scores/history.csv in repo)
               </button>
-              <Link href="/mistakes" className="rounded-md border border-border px-4 py-2 text-sm">
+              <Link href="/mistakes" className="rounded-md border border-border shadow-sm px-4 py-2 text-sm">
                 Mistake Notebook →
               </Link>
             </div>
@@ -152,7 +154,7 @@ export default function Analyze() {
 
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-border p-3 text-center">
+    <div className="rounded-lg border border-border shadow-sm p-3 text-center">
       <div className="text-lg font-semibold">{value}</div>
       <div className="text-[11px] text-ink-3">{label}</div>
     </div>

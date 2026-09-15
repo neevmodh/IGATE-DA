@@ -57,7 +57,7 @@ export default function MotivationBar() {
   const pct = Math.min((solvedToday / goal) * 100, 100);
 
   return (
-    <div className="rounded-2xl border border-border bg-surface p-6 flex flex-col gap-4 h-full">
+    <div className="rounded-2xl border border-border shadow-sm bg-surface p-6 flex flex-col gap-4 h-full">
       <div className="flex items-center justify-between">
         <span className="text-[13px] font-semibold text-ink-2 uppercase tracking-wide">Streak</span>
         <span className="display text-[26px] font-extrabold text-accent-ink flex items-baseline gap-1">
@@ -84,7 +84,7 @@ export default function MotivationBar() {
               type="number"
               value={goal}
               onChange={(e) => updateGoal(Number(e.target.value))}
-              className="w-10 rounded border border-border bg-transparent px-1 text-center"
+              className="w-10 rounded border border-border shadow-sm bg-transparent px-1 text-center"
             />
             Qs
           </span>

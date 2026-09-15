@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import questions from "@/data/questions.json";
@@ -27,7 +29,7 @@ export default function Bookmarks() {
     <div className="min-h-screen bg-bg text-ink">
       <div className="max-w-2xl mx-auto px-6 py-10">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">Bookmarks</h1>
+          <div className="flex items-center gap-2.5"><Image src="/gate-logo.svg" alt="" width={22} height={20} /><h1 className="text-2xl font-bold">Bookmarks</h1></div>
           <Link href="/" className="text-accent hover:underline text-sm">
             ← Home
           </Link>
@@ -40,7 +42,7 @@ export default function Bookmarks() {
         ) : (
           <div className="space-y-4">
             {bookmarked.map((q) => (
-              <div key={q.id} className="rounded-lg border border-border p-4 text-sm">
+              <div key={q.id} className="rounded-lg border border-border shadow-sm p-4 text-sm">
                 <div className="flex justify-between items-start mb-1">
                   <span className="text-xs text-ink-3">
                     {q.section} — {q.topic}

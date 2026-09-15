@@ -29,11 +29,13 @@ export default function TopNav() {
 
   return (
     <div className="sticky top-0 z-10 bg-surface border-b border-border">
-      <div className="max-w-[1120px] mx-auto px-10 h-[60px] flex items-center justify-between">
+      <div className="max-w-[1120px] mx-auto px-10 h-[68px] flex items-center justify-between">
         <div className="flex items-center gap-8">
-          <Link href="/" className="flex items-center gap-2.5">
-            <Image src="/gate-logo.svg" alt="GATE 2027 emblem" width={26} height={24} />
-            <span className="display text-[16px] font-bold">I-GATE</span>
+          <Link href="/" className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-full bg-surface border border-border shadow-sm flex items-center justify-center overflow-hidden shrink-0">
+              <Image src="/gate-logo.svg" alt="GATE 2027 emblem" width={38} height={35} />
+            </div>
+            <span className="display text-[18px] font-extrabold tracking-tight">I-GATE</span>
           </Link>
           <div className="flex items-center gap-0.5">
             {TABS.map((t) => {

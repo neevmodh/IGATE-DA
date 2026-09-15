@@ -1,6 +1,7 @@
 "use client";
 
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import questions from "@/data/questions.json";
 import { Question } from "@/lib/types";
@@ -242,13 +243,16 @@ function TestInner() {
       <div className="max-w-5xl mx-auto px-4 py-6 flex gap-6">
         <div className="flex-1 max-w-2xl">
           <div className="flex justify-between items-center mb-6">
-            <span className="text-sm text-ink-3">
-              Question {current + 1} / {testQuestions.length}
-            </span>
+            <div className="flex items-center gap-2.5">
+              <Image src="/gate-logo.svg" alt="" width={22} height={20} />
+              <span className="text-sm text-ink-3">
+                Question {current + 1} / {testQuestions.length}
+              </span>
+            </div>
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setShowCalc((v) => !v)}
-                className="text-xs rounded border border-border px-2 py-1"
+                className="text-xs rounded border border-border shadow-sm px-2 py-1"
               >
                 🧮 Calculator
               </button>
@@ -258,7 +262,7 @@ function TestInner() {
             </div>
           </div>
 
-          <div className="rounded-lg border border-border p-6">
+          <div className="rounded-lg border border-border shadow-sm p-6">
             <div className="text-xs text-ink-3 mb-2">
               {q.section} — {q.topic} · {q.type} · {q.marks} mark{q.marks > 1 ? "s" : ""}
             </div>
@@ -320,7 +324,7 @@ function TestInner() {
                 value={(answers[q.id] as number) ?? ""}
                 onChange={(e) => setAnswer(e.target.value === "" ? null : Number(e.target.value))}
                 placeholder="Enter numeric answer"
-                className="w-full rounded-md border border-border bg-transparent px-3 py-2"
+                className="w-full rounded-md border border-border shadow-sm bg-transparent px-3 py-2"
               />
             )}
           </div>
@@ -329,7 +333,7 @@ function TestInner() {
             <button
               disabled={current === 0}
               onClick={() => goTo(current - 1)}
-              className="rounded-md border border-border px-4 py-2 text-sm disabled:opacity-40"
+              className="rounded-md border border-border shadow-sm px-4 py-2 text-sm disabled:opacity-40"
             >
               Previous
             </button>
@@ -362,7 +366,7 @@ function TestInner() {
         </div>
 
         <aside className="w-56 shrink-0 hidden md:block">
-          <div className="rounded-lg border border-border p-3 sticky top-6">
+          <div className="rounded-lg border border-border shadow-sm p-3 sticky top-6">
             <div className="text-sm font-medium mb-2">Question Palette</div>
             <div className="grid grid-cols-5 gap-1 mb-3">
               {testQuestions.map((tq, i) => (

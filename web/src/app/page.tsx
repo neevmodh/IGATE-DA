@@ -74,24 +74,29 @@ export default function Home() {
   return (
     <div className="flex-1 bg-bg text-ink">
       <main className="max-w-[1120px] mx-auto px-10 py-9">
-        <div className="mb-7">
-          <h1 className="display text-[30px] font-extrabold mb-1.5">Good to see you, Neev.</h1>
-          <p className="text-ink-2 text-[15px]">
-            GATE DA 2027 &middot; Data Science &amp; Artificial Intelligence
-          </p>
+        <div className="flex items-center gap-5 mb-8">
+          <div className="w-16 h-16 rounded-full bg-surface border border-border shadow-md flex items-center justify-center shrink-0">
+            <Image src="/gate-logo.svg" alt="GATE 2027 emblem" width={54} height={50} />
+          </div>
+          <div>
+            <h1 className="display text-[30px] font-extrabold mb-1">Good to see you, Neev.</h1>
+            <p className="text-ink-2 text-[15px]">
+              GATE DA 2027 &middot; Data Science &amp; Artificial Intelligence
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-5 mb-5">
           <a
             href="/test?mode=daily"
-            className="relative overflow-hidden rounded-2xl border border-border bg-surface p-7 flex flex-col justify-between"
+            className="relative overflow-hidden rounded-2xl border border-border shadow-sm bg-surface p-7 flex flex-col justify-between"
           >
             <Image
               src="/gate-logo.svg"
               alt=""
-              width={280}
-              height={260}
-              className="absolute -right-10 -bottom-14 opacity-[0.05] pointer-events-none select-none"
+              width={320}
+              height={296}
+              className="absolute -right-14 -bottom-16 opacity-[0.14] pointer-events-none select-none"
             />
             <div className="relative">
               <div className="flex items-center gap-2 mb-3.5">
@@ -118,7 +123,7 @@ export default function Home() {
             <a
               key={c.href}
               href={c.href}
-              className="rounded-xl border border-border bg-surface p-4.5 flex flex-col gap-2.5 hover:border-accent/40 transition-colors"
+              className="rounded-xl border border-border shadow-sm bg-surface p-4.5 flex flex-col gap-2.5 hover:border-accent/40 transition-colors"
             >
               <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${c.warn ? "bg-warn-tint" : "bg-accent-tint"}`}>
                 <svg

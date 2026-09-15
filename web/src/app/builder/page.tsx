@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -37,7 +39,7 @@ export default function Builder() {
     <div className="min-h-screen bg-bg text-ink">
       <div className="max-w-2xl mx-auto px-6 py-10">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">Custom Test Builder</h1>
+          <div className="flex items-center gap-2.5"><Image src="/gate-logo.svg" alt="" width={22} height={20} /><h1 className="text-2xl font-bold">Custom Test Builder</h1></div>
           <Link href="/" className="text-accent hover:underline text-sm">
             ← Home
           </Link>
@@ -90,7 +92,7 @@ export default function Builder() {
               max={Math.max(matchCount, 1)}
               value={count}
               onChange={(e) => setCount(Number(e.target.value))}
-              className="w-full rounded-md border border-border bg-transparent px-3 py-2"
+              className="w-full rounded-md border border-border shadow-sm bg-transparent px-3 py-2"
             />
             <p className="text-xs text-ink-3 mt-1">{matchCount} questions match this filter</p>
           </div>
