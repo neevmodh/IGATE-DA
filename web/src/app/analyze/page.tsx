@@ -6,9 +6,15 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Attempt } from "@/lib/types";
 import cutoffs from "@/data/cutoffs.json";
+import { loadSkills, SkillMap } from "@/lib/skill";
 
 export default function Analyze() {
   const [history, setHistory] = useState<Attempt[]>([]);
+  const [skills, setSkills] = useState<SkillMap>({});
+
+  useEffect(() => {
+    setSkills(loadSkills());
+  }, []);
 
   useEffect(() => {
     const raw = localStorage.getItem("igate_history");
@@ -103,6 +109,34 @@ export default function Analyze() {
                 );
               })}
             </div>
+          </div>
+        )}
+
+        {Object.keys(skills).length > 0 && (
+          <div className="mb-8 rounded-lg border border-border shadow-sm bg-surface p-4 text-sm">
+            <div className="font-medium mb-3">Topic skill ratings (adaptive engine)</div>
+            <div className="flex flex-col gap-2">
+              {Object.entries(skills)
+                .sort((a, b) => a[1] - b[1])
+                .map(([topic, rating]) => {
+                  const pct = Math.min(Math.max(((rating - 800) / (1800 - 800)) * 100, 2), 100);
+                  const color = rating < 1150 ? "bg-red-500" : rating < 1450 ? "bg-warn" : "bg-good";
+                  return (
+                    <div key={topic}>
+                      <div className="flex justify-between text-xs mb-1">
+                        <span>{topic}</span>
+                        <span className="text-ink-3">{rating}</span>
+                      </div>
+                      <div className="h-2 rounded-full bg-border-soft overflow-hidden">
+                        <div className={`h-full rounded-full ${color}`} style={{ width: `${pct}%` }} />
+                      </div>
+                    </div>
+                  );
+                })}
+            </div>
+            <p className="text-[11px] text-ink-3 mt-3">
+              Updates after every Smart Practice / any test — an Elo-style rating per topic that targets questions near your current skill level.
+            </p>
           </div>
         )}
 

@@ -110,6 +110,13 @@ export default function Practice() {
             Start Test
           </button>
 
+          <Link
+            href="/test?mode=adaptive&count=15"
+            className="block w-full text-center rounded-lg border border-accent text-accent py-3 font-medium hover:bg-accent-tint transition-colors"
+          >
+            ⚡ Smart Practice — adapts to your skill level per topic
+          </Link>
+
           <p className="text-xs text-ink-3 text-center">
             Want more control? Try the{" "}
             <Link href="/builder" className="text-accent hover:underline">

@@ -8,6 +8,7 @@ import { Question } from "@/lib/types";
 import { scoreQuestion, UserAnswer } from "@/lib/scoring";
 import Calculator from "@/components/Calculator";
 import { isDue } from "@/lib/srs";
+import { loadSkills, saveSkills, updateSkill, pickAdaptive } from "@/lib/skill";
 
 const allQuestions = questions as Question[];
 const AUTOSAVE_KEY = "igate_inprogress_test";
@@ -68,6 +69,10 @@ function TestInner() {
     if (mode === "pyq") {
       const pool = allQuestions.filter((q) => q.source !== "generated");
       return shuffle(pool).slice(0, Math.min(count || 65, pool.length));
+    }
+    if (mode === "adaptive") {
+      const skills = loadSkills();
+      return pickAdaptive(allQuestions, skills, count || 15);
     }
     const pool = allQuestions.filter((q) => q.section === section);
     return shuffle(pool).slice(0, count);
@@ -226,6 +231,16 @@ function TestInner() {
       }
     });
     localStorage.setItem("igate_mistakes", JSON.stringify(mistakes));
+
+    let skills = loadSkills();
+    testQuestions.forEach((tq) => {
+      const ans = answers[tq.id] ?? null;
+      const result = scoreQuestion(tq, ans);
+      if (result.attempted) {
+        skills = updateSkill(skills, tq.topic, tq.difficulty, result.isCorrect);
+      }
+    });
+    saveSkills(skills);
 
     sessionStorage.setItem(
       "igate_last_result",
