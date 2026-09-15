@@ -1,0 +1,61 @@
+[
+  {
+    "section": "Probability and Statistics",
+    "items": [
+      { "type": "video", "title": "Statistics Fundamentals (playlist)", "source": "StatQuest with Josh Starmer", "url": "https://www.youtube.com/@statquest" },
+      { "type": "video", "title": "GATE DA Probability & Statistics series", "source": "Piyush Wairale", "url": "https://piyushai.com/probability-and-statistics-for-gate-da/" },
+      { "type": "notes", "title": "Chapter-wise notes + PYQs", "source": "GateXAIML", "url": "https://www.gatexaiml.in/gatexaiml_black/da/index.php" }
+    ]
+  },
+  {
+    "section": "Linear Algebra",
+    "items": [
+      { "type": "video", "title": "Essence of Linear Algebra (playlist)", "source": "3Blue1Brown", "url": "https://www.youtube.com/@3blue1brown" },
+      { "type": "notes", "title": "Free GATE DA study material", "source": "GeeksforGeeks", "url": "https://www.geeksforgeeks.org/gate/gate-da-free-online-resources-and-study-material/" }
+    ]
+  },
+  {
+    "section": "Calculus and Optimization",
+    "items": [
+      { "type": "video", "title": "Essence of Calculus (playlist)", "source": "3Blue1Brown", "url": "https://www.youtube.com/@3blue1brown" },
+      { "type": "video", "title": "Multivariable calculus & optimization", "source": "Khan Academy", "url": "https://www.khanacademy.org/math/multivariable-calculus" }
+    ]
+  },
+  {
+    "section": "Programming, Data Structures & Algorithms",
+    "items": [
+      { "type": "video", "title": "Data Structures & Algorithms course", "source": "freeCodeCamp.org", "url": "https://www.youtube.com/@freecodecamp" },
+      { "type": "video", "title": "DSA for GATE playlist", "source": "Gate Smashers", "url": "https://www.youtube.com/@GateSmashers" }
+    ]
+  },
+  {
+    "section": "Database Management & Warehousing",
+    "items": [
+      { "type": "video", "title": "DBMS full course for GATE", "source": "Gate Smashers", "url": "https://www.youtube.com/@GateSmashers" },
+      { "type": "notes", "title": "Free GATE DA study material", "source": "GeeksforGeeks", "url": "https://www.geeksforgeeks.org/gate/gate-da-free-online-resources-and-study-material/" }
+    ]
+  },
+  {
+    "section": "Machine Learning",
+    "items": [
+      { "type": "video", "title": "Machine Learning playlist (StatQuest)", "source": "StatQuest with Josh Starmer", "url": "https://www.youtube.com/@statquest" },
+      { "type": "video", "title": "Complete ML playlist", "source": "Krish Naik", "url": "https://www.youtube.com/@krishnaik06" },
+      { "type": "notes", "title": "GATE DA study material & practice questions", "source": "Analytics Vidhya", "url": "https://www.analyticsvidhya.com/blog/2026/01/gate-da-study-material-and-questions/" }
+    ]
+  },
+  {
+    "section": "Artificial Intelligence",
+    "items": [
+      { "type": "video", "title": "AI search & reasoning playlist", "source": "Krish Naik", "url": "https://www.youtube.com/@krishnaik06" },
+      { "type": "notes", "title": "NPTEL Artificial Intelligence course", "source": "NPTEL", "url": "https://nptel.ac.in" }
+    ]
+  },
+  {
+    "section": "General",
+    "items": [
+      { "type": "practice", "title": "Free chapter-wise & full mock tests", "source": "OpenExamPrep", "url": "https://open-exam-prep.com/practice/in-gate-da" },
+      { "type": "notes", "title": "Free GATE DA notes", "source": "Gate Data Science", "url": "https://www.gatedatascience.com/courses/GATE-DA-2026-NOTES-Free-68ab24428300ae1120560f74" },
+      { "type": "video", "title": "GATE DA-focused prep channel", "source": "eGATEai", "url": "https://www.youtube.com/@eGATEai" }
+    ]
+  }
+]

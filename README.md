@@ -18,3 +18,6 @@ Ask for a test by topic, chapter, or full mock (GATE-style: 65 Q, 100 marks, MCQ
 
 ## Score tracking
 After each test, results are appended to `scores/history.csv` so weak topics can be tracked over time.
+
+## Web app
+Deployed at https://igate.up.railway.app — see `web/` for the Next.js app. Curated topic-wise YouTube/study links live in `web/src/data/resources.json`, shown at `/resources`.

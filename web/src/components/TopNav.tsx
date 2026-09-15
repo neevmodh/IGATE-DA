@@ -18,6 +18,7 @@ const MORE = [
   { href: "/bookmarks", label: "Bookmarks" },
   { href: "/mistakes", label: "Mistakes" },
   { href: "/cheatsheets", label: "Cheat Sheets" },
+  { href: "/resources", label: "Study Resources" },
   { href: "/admin", label: "Add Questions" },
 ];
 
