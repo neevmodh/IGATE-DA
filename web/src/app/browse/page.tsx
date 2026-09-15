@@ -82,11 +82,20 @@ export default function Browse() {
         <div className="space-y-3">
           {filtered.map((q) => (
             <div key={q.id} className="rounded-lg border border-border shadow-sm p-4 text-sm">
-              <div className="flex justify-between items-start mb-1">
-                <span className="text-xs text-ink-3">
-                  {q.section} — {q.topic} · {q.difficulty} · {q.source}
+              <div className="flex justify-between items-start mb-1 gap-2">
+                <span className="text-xs text-ink-3 flex items-center gap-2 flex-wrap">
+                  {q.section} — {q.topic} · {q.difficulty}
+                  {q.source !== "generated" ? (
+                    <span className="rounded-full bg-accent-tint text-accent-ink px-2 py-0.5 text-[10.5px] font-semibold">
+                      {q.source}
+                    </span>
+                  ) : (
+                    <span className="rounded-full bg-border-soft text-ink-3 px-2 py-0.5 text-[10.5px] font-semibold">
+                      AI-generated
+                    </span>
+                  )}
                 </span>
-                <button onClick={() => toggleBookmark(q.id)} className="text-xs">
+                <button onClick={() => toggleBookmark(q.id)} className="text-xs shrink-0">
                   {bookmarks.includes(q.id) ? "★ Bookmarked" : "☆ Bookmark"}
                 </button>
               </div>

@@ -263,8 +263,15 @@ function TestInner() {
           </div>
 
           <div className="rounded-lg border border-border shadow-sm p-6">
-            <div className="text-xs text-ink-3 mb-2">
-              {q.section} — {q.topic} · {q.type} · {q.marks} mark{q.marks > 1 ? "s" : ""}
+            <div className="flex items-center gap-2 text-xs text-ink-3 mb-2">
+              <span>
+                {q.section} — {q.topic} · {q.type} · {q.marks} mark{q.marks > 1 ? "s" : ""}
+              </span>
+              {q.source !== "generated" && (
+                <span className="rounded-full bg-accent-tint text-accent-ink px-2 py-0.5 text-[10.5px] font-semibold">
+                  {q.source}
+                </span>
+              )}
             </div>
             <p className="mb-4 whitespace-pre-wrap">{q.question}</p>
 

@@ -73,8 +73,13 @@ export default function Results() {
                     : "border-red-300 bg-red-50 dark:bg-red-950 dark:border-red-800"
                 }`}
               >
-                <div className="text-xs text-ink-3 mb-1">
-                  {q.section} — {q.topic}
+                <div className="flex items-center gap-2 text-xs text-ink-3 mb-1">
+                  <span>{q.section} — {q.topic}</span>
+                  {q.source !== "generated" && (
+                    <span className="rounded-full bg-accent-tint text-accent-ink px-2 py-0.5 text-[10.5px] font-semibold">
+                      {q.source}
+                    </span>
+                  )}
                 </div>
                 <p className="mb-2 whitespace-pre-wrap">{q.question}</p>
                 <p className="text-xs mb-1">
