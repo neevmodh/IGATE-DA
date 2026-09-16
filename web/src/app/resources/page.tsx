@@ -38,6 +38,9 @@ export default function Resources() {
                     <span>
                       <span className="block text-[13.5px] font-medium">{it.title}</span>
                       <span className="block text-[11.5px] text-ink-3">{it.source}</span>
+                      {"topic" in it && it.topic && (
+                        <span className="block text-[11px] text-ink-3/70 italic">{it.topic}</span>
+                      )}
                     </span>
                   </a>
                 ))}
